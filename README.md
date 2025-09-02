@@ -4,7 +4,7 @@ A modern, interactive portfolio website built with Next.js 15, React 19, TypeScr
 
 ## Features
 
-- 🎨 Modern UI with dark/light theme support
+- 🎨 Modern UI with dark theme 
 - 🌍 Interactive 3D Earth with orbiting skills
 - ✨ Smooth animations with GSAP and Framer Motion
 - 📱 Responsive design

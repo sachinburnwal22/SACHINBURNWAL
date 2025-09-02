@@ -20,8 +20,6 @@ function Earth({ reducedMotion }: { reducedMotion: boolean }) {
   const ref = React.useRef<THREE.Mesh>(null!);
   const colorMap = useTexture("/assets/3d/texture_earth.jpg");
   if (colorMap) {
-    // Ensure correct color space for realistic rendering
-    // @ts-expect-error colorSpace exists at runtime on Texture
     colorMap.colorSpace = SRGBColorSpace;
   }
 

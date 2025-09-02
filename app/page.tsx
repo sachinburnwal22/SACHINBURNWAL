@@ -1,6 +1,5 @@
 "use client";
-
-import { ThemeToggle } from "@/components/theme-toggle";
+// import { ThemeToggle } from "@/components/theme-toggle";
 import CursorTrail from "@/components/effects/cursor-trail";
 import Reveal from "@/components/effects/reveal";
 import dynamic from "next/dynamic";
@@ -15,7 +14,8 @@ import ProjectsMarquee from "@/components/sections/projects-marquee";
 import CertificationsSection from "@/components/sections/certifications";
 import ContactCTA from "@/components/sections/contact-cta";
 import Typewriter from "@/components/typewriter";
-import { useState, useEffect } from "react";
+import HeroCodeCard from "@/components/hero-code-card";
+import { Github, Linkedin, Twitter } from "lucide-react";
 
 const projects = [
   {
@@ -36,12 +36,6 @@ const projects = [
 ];
 
 export default function HomePage() {
-  const [currentYear, setCurrentYear] = useState("");
-
-  useEffect(() => {
-    setCurrentYear(new Date().getFullYear().toString());
-  }, []);
-
   return (
     <main className="relative z-10 min-h-screen bg-background text-foreground">
       <CursorTrail />
@@ -68,7 +62,7 @@ export default function HomePage() {
               href="#orbit"
               className="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              Skills
+              3D
             </a>
             <a
               href="#projects"
@@ -82,51 +76,106 @@ export default function HomePage() {
             >
               Contact
             </a>
-            <ThemeToggle />
           </nav>
         </div>
       </header>
 
+      {/* Updated Hero Section */}
       <section className="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -z-10 top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl"
+        />
+
         <Reveal>
-          {/* Removed: <p className="text-sm font-mono text-accent">Hello, I’m</p> */}
-          <h2 className="mt-2 text-balance font-serif text-4xl font-bold leading-tight md:text-6xl">
-            <Typewriter
-              sequence={[
-                "Hello viewers,",
-                "I'm Sachin Burnwal",
-                "Web Developer",
-                "Tech Enthusiast",
-                "A Dreamer",
-              ]}
-              speed={50}
-              deleteSpeed={35}
-              pauseMs={900}
-              className="text-foreground"
-            />
-          </h2>
-          <p className="mt-4 max-w-2xl text-pretty text-muted-foreground">
-            I build fast, accessible, and modern web apps with React and
-            JavaScript. Beautifully engineered interfaces, robust architecture,
-            and delightful interactions.
-          </p>
-          <div className="mt-8 flex gap-3">
-            <Ripple>
-              <a
-                href="#projects"
-                className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                View Projects
-              </a>
-            </Ripple>
-            <Ripple>
-              <a
-                href="#contact"
-                className="rounded-md border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-accent hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                Get in Touch
-              </a>
-            </Ripple>
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            <div>
+              <h2 className="mt-2 text-balance font-serif text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+                <Typewriter
+                  sequence={[
+                    "Hello viewers,",
+                    "I'm Sachin Burnwal",
+                    "Web Developer",
+                    "Tech Enthusiast",
+                    "A Dreamer",
+                  ]}
+                  speed={50}
+                  deleteSpeed={35}
+                  pauseMs={900}
+                  className="text-white"
+                />
+              </h2>
+              <p className="mt-3 text-pretty text-2xl md:text-3xl font-semibold">
+                I&apos;m a Professional{" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
+                  Software Developer
+                </span>{" "}
+                Aspirant.
+              </p>
+              <p className="mt-4 max-w-2xl text-pretty text-muted-foreground">
+                I build fast, accessible, and modern web apps with React and
+                JavaScript. Beautifully engineered interfaces, robust
+                architecture, and delightful interactions.
+              </p>
+              <div className="mt-6 flex items-center gap-4">
+                <a
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="GitHub"
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
+                >
+                  <Github className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
+                >
+                  <Linkedin className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
+                </a>
+                <a
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Twitter"
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
+                >
+                  <Twitter className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
+                </a>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Ripple>
+                  <a
+                    href="#projects"
+                    className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-[0_0_25px_rgba(34,211,238,0.25)] transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    View Projects
+                  </a>
+                </Ripple>
+                <Ripple>
+                  <a
+                    href="#contact"
+                    className="rounded-full border border-cyan-400/40 bg-black/20 px-5 py-2.5 text-sm font-medium text-foreground ring-1 ring-cyan-400/20 transition-colors hover:border-cyan-300/60 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    Get in Touch
+                  </a>
+                </Ripple>
+              </div>
+            </div>
+            <div className="relative">
+              <HeroCodeCard className="md:ml-auto" />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-x-6 -bottom-6 h-24 rounded-full bg-cyan-500/20 blur-2xl"
+              />
+            </div>
           </div>
         </Reveal>
       </section>
@@ -196,7 +245,7 @@ export default function HomePage() {
       <footer className="border-t border-border bg-background">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 text-sm text-muted-foreground">
           <p className="text-pretty">
-            © {currentYear} Sachin Burnwal — Web Developer
+            © {new Date().getFullYear()} Sachin Burnwal — Web Developer
           </p>
           <div className="flex items-center gap-4">
             <a href="#projects" className="transition-colors hover:text-accent">
