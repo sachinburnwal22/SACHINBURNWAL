@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useId } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -57,17 +57,8 @@ const PROJECTS: Project[] = [
     github: "https://github.com/sachinburnwal22/NQueen-Visulaizer",
     live: "https://sachinburnwal22.github.io/NQueen-Visulaizer/",
   },
-  {
-    title: "Puppeteer Automations",
-    desc: "Headless workflows for scraping and QA testing.",
-    image: "/project-preview.png",
-    stack: ["Node.js", "Puppeteer"],
-    github: "#",
-    live: "#",
-  },
 ];
 
-// keep the exact visual structure from the existing ProjectCard
 function ProjectCard({ project }: { project: Project }) {
   return (
     <TiltCard className="group relative h-full w-[20rem] shrink-0 overflow-hidden bg-card p-0 sm:w-[24rem]">
@@ -136,7 +127,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 function MarqueeTrack({
   items,
-  duration = 60,
+  duration = 30,
   reverse = false,
   paused,
 }: {
@@ -146,21 +137,35 @@ function MarqueeTrack({
   paused: boolean;
 }) {
   const looped = useMemo(() => [...items, ...items], [items]);
+  const animId = useId();
   return (
-    <div
-      className={cn(
-        "marquee-track flex gap-4 sm:gap-6",
-        reverse && "marquee-track--alt"
-      )}
-      style={{
-        animationDuration: `${duration}s`,
-        animationPlayState: paused ? ("paused" as const) : ("running" as const),
-      }}
-    >
-      {looped.map((p, idx) => (
-        <ProjectCard key={`${p.title}-${idx}`} project={p} />
-      ))}
-    </div>
+    <>
+      <style>{`
+        @keyframes marquee-${animId} {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-rev-${animId} {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
+      <div
+        className={cn("flex min-w-[200%] gap-4 sm:gap-6 will-change-transform")}
+        style={{
+          animation: `${
+            reverse ? `marquee-rev-${animId}` : `marquee-${animId}`
+          } ${duration}s linear infinite`,
+          animationPlayState: paused
+            ? ("paused" as const)
+            : ("running" as const),
+        }}
+      >
+        {looped.map((p, idx) => (
+          <ProjectCard key={`${p.title}-${idx}`} project={p} />
+        ))}
+      </div>
+    </>
   );
 }
 
