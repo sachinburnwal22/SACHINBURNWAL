@@ -1,37 +1,37 @@
-"use client"
+"use client";
 
-import { useEffect, useMemo, useRef, useState } from "react"
-import { motion, useReducedMotion } from "framer-motion"
-import { TiltCard } from "@/components/ui/tilt-card"
-import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { useEffect, useMemo, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { TiltCard } from "@/components/ui/tilt-card";
+import { Button } from "@/components/ui/button";
+import { Github, ExternalLink } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type Project = {
-  title: string
-  desc: string
-  image?: string
-  stack: string[]
-  github?: string
-  live?: string
-}
+  title: string;
+  desc: string;
+  image?: string;
+  stack: string[];
+  github?: string;
+  live?: string;
+};
 
 const PROJECTS: Project[] = [
   {
-    title: "Realtime Dashboard",
-    desc: "Streaming metrics with websockets and charts.",
-    image: "/project-preview.png",
+    title: "Virasa",
+    desc: "Discover the legacy of master craftspeople and bring their timeless creations into your world",
+    image: "https://i.postimg.cc/qqBfh0CT/Screenshot-2025-09-03-011225.png",
     stack: ["Next.js", "WebSockets", "Recharts"],
-    github: "#",
-    live: "#",
+    github: "https://github.com/sachinburnwal22/Virasa3",
+    live: "https://virasa3.vercel.app/",
   },
   {
-    title: "AI Doc Summarizer",
-    desc: "Summarize and search documents with embeddings.",
-    image: "/project-preview.png",
+    title: "AI Resume Builder",
+    desc: "AI powered resume builder that creates professional resumes instantly with smart formatting, optimization.",
+    image: "https://i.postimg.cc/mkxr9PyH/image.png",
     stack: ["AI", "Vector Search", "RAG"],
-    github: "#",
-    live: "#",
+    github: "https://github.com/sachinburnwal22/ResumeBuilder",
+    live: "https://airesumebuilder-9kvc.vercel.app/",
   },
   {
     title: "E-commerce Microfrontends",
@@ -65,33 +65,37 @@ const PROJECTS: Project[] = [
     github: "#",
     live: "#",
   },
-]
+];
 
 export default function ProjectsShowcase() {
-  const reduced = useReducedMotion()
-  const scrollerRef = useRef<HTMLDivElement | null>(null)
-  const [progress, setProgress] = useState(0)
+  const reduced = useReducedMotion();
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const el = scrollerRef.current
-    if (!el) return
+    const el = scrollerRef.current;
+    if (!el) return;
     const onScroll = () => {
-      const max = el.scrollWidth - el.clientWidth
-      setProgress(max > 0 ? el.scrollLeft / max : 0)
-    }
-    onScroll()
-    el.addEventListener("scroll", onScroll, { passive: true })
-    return () => el.removeEventListener("scroll", onScroll)
-  }, [])
+      const max = el.scrollWidth - el.clientWidth;
+      setProgress(max > 0 ? el.scrollLeft / max : 0);
+    };
+    onScroll();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
 
   const cardVariants = useMemo(
     () => ({
-      initial: { opacity: 0, y: reduced ? 0 : 16, filter: reduced ? "none" : "blur(2px)" },
+      initial: {
+        opacity: 0,
+        y: reduced ? 0 : 16,
+        filter: reduced ? "none" : "blur(2px)",
+      },
       animate: { opacity: 1, y: 0, filter: "blur(0px)" },
       transition: { duration: 0.5, ease: "easeOut" as const },
     }),
-    [reduced],
-  )
+    [reduced]
+  );
 
   return (
     <div className="relative">
@@ -113,7 +117,7 @@ export default function ProjectsShowcase() {
         ref={scrollerRef}
         className={cn(
           "no-scrollbar relative -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 pt-1",
-          "scroll-pt-4",
+          "scroll-pt-4"
         )}
         aria-label="Projects list"
       >
@@ -132,7 +136,7 @@ export default function ProjectsShowcase() {
         ))}
       </div>
     </div>
-  )
+  );
 }
 
 function ProjectCard({ project }: { project: Project }) {
@@ -146,7 +150,12 @@ function ProjectCard({ project }: { project: Project }) {
           className="h-full w-full object-cover"
           initial={false}
           whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 200, damping: 20, mass: 0.4 }}
+          transition={{
+            type: "spring",
+            stiffness: 200,
+            damping: 20,
+            mass: 0.4,
+          }}
         />
         {/* Top-right stack chips */}
         <div className="pointer-events-none absolute right-2 top-2 z-10 flex flex-wrap justify-end gap-1">
@@ -170,7 +179,12 @@ function ProjectCard({ project }: { project: Project }) {
         <div className="mt-3 flex items-center gap-2">
           {project.live && (
             <Button asChild size="sm">
-              <a href={project.live} aria-label={`${project.title} live demo`} target="_blank" rel="noreferrer">
+              <a
+                href={project.live}
+                aria-label={`${project.title} live demo`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <ExternalLink className="size-4" />
                 Live
               </a>
@@ -178,7 +192,12 @@ function ProjectCard({ project }: { project: Project }) {
           )}
           {project.github && (
             <Button asChild variant="outline" size="sm">
-              <a href={project.github} aria-label={`${project.title} GitHub repo`} target="_blank" rel="noreferrer">
+              <a
+                href={project.github}
+                aria-label={`${project.title} GitHub repo`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Github className="size-4" />
                 GitHub
               </a>
@@ -187,5 +206,5 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
     </TiltCard>
-  )
+  );
 }

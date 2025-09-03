@@ -15,8 +15,8 @@ import CertificationsSection from "@/components/sections/certifications";
 import ContactCTA from "@/components/sections/contact-cta";
 import Typewriter from "@/components/typewriter";
 import HeroCodeCard from "@/components/hero-code-card";
-import { Github, Linkedin, Twitter } from "lucide-react";
-
+import { Github, Linkedin } from "lucide-react";
+import LeetCode from "@/components/icons/leetcode";
 const projects = [
   {
     title: "Realtime Dashboard",
@@ -97,11 +97,14 @@ export default function HomePage() {
               <h2 className="mt-2 text-balance font-serif text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
                 <Typewriter
                   sequence={[
-                    "Hello viewers,",
-                    "I'm Sachin Burnwal",
+                    "Hey Learners,",
+                    "I'm Sachin",
                     "Web Developer",
-                    "Tech Enthusiast",
-                    "A Dreamer",
+                    "Tech Explorer",
+                    "Creative Thinker",
+                    "Dream Chaser",
+                    "Problem Solver",
+                    "Lifelong Learner",
                   ]}
                   speed={50}
                   deleteSpeed={35}
@@ -110,7 +113,7 @@ export default function HomePage() {
                 />
               </h2>
               <p className="mt-3 text-pretty text-2xl md:text-3xl font-semibold">
-                I&apos;m a Professional{" "}
+                I&apos;m a{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
                   Software Developer
                 </span>{" "}
@@ -123,7 +126,7 @@ export default function HomePage() {
               </p>
               <div className="mt-6 flex items-center gap-4">
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/sachinburnwal22"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub"
@@ -132,7 +135,7 @@ export default function HomePage() {
                   <Github className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/"
+                  href="https://www.linkedin.com/in/sachin-burnwal-2004sb"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
@@ -141,13 +144,13 @@ export default function HomePage() {
                   <Linkedin className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
                 </a>
                 <a
-                  href="https://twitter.com/"
+                  href="https://leetcode.com/burnwal_sachin2004"
                   target="_blank"
                   rel="noreferrer"
-                  aria-label="Twitter"
+                  aria-label="LeetCode"
                   className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
                 >
-                  <Twitter className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
+                  <LeetCode className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
                 </a>
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
