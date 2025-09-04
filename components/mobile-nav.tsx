@@ -73,7 +73,7 @@ export default function MobileNav() {
             onClick={handleLinkClick}
             className="block py-2 text-lg font-medium transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-md px-2"
           >
-            3D
+            Skills
           </a>
           <a
             href="#projects"
