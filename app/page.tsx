@@ -62,7 +62,7 @@ export default function HomePage() {
               href="#orbit"
               className="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              3D
+              Skills
             </a>
             <a
               href="#projects"
