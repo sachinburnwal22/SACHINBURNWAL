@@ -15,8 +15,10 @@ import CertificationsSection from "@/components/sections/certifications";
 import ContactCTA from "@/components/sections/contact-cta";
 import Typewriter from "@/components/typewriter";
 import HeroCodeCard from "@/components/hero-code-card";
+import MobileNav from "@/components/mobile-nav";
 import { Github, Linkedin } from "lucide-react";
 import LeetCode from "@/components/icons/leetcode";
+
 const projects = [
   {
     title: "Realtime Dashboard",
@@ -45,7 +47,9 @@ export default function HomePage() {
           <span className="text-foreground font-serif text-lg font-bold tracking-tight">
             Sachin Burnwal
           </span>
-          <nav className="flex items-center gap-6 text-sm text-muted-foreground">
+
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
             <a
               href="#about"
               className="transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -77,24 +81,26 @@ export default function HomePage() {
               Contact
             </a>
           </nav>
+
+          {/* Mobile navigation */}
+          <MobileNav />
         </div>
       </header>
 
-      {/* Updated Hero Section */}
-      <section className="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
+      <section className="relative mx-auto max-w-6xl px-4 py-12 md:py-20 lg:py-28">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(rgba(34,211,238,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -z-10 top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl"
+          className="pointer-events-none absolute -z-10 top-0 left-1/2 h-[280px] w-[280px] md:h-[420px] md:w-[420px] -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl"
         />
 
         <Reveal>
-          <div className="grid gap-10 md:grid-cols-2 md:items-center">
-            <div>
-              <h2 className="mt-2 text-balance font-serif text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+          <div className="grid gap-8 md:gap-10 lg:grid-cols-2 lg:items-center">
+            <div className="text-center lg:text-left">
+              <h2 className="mt-2 text-balance font-serif text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
                 <Typewriter
                   sequence={[
                     "Hey Learners,",
@@ -112,36 +118,36 @@ export default function HomePage() {
                   className="text-white"
                 />
               </h2>
-              <p className="mt-3 text-pretty text-2xl md:text-3xl font-semibold">
+              <p className="mt-3 text-pretty text-xl sm:text-2xl md:text-3xl font-semibold">
                 I&apos;m a{" "}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500">
                   Software Developer
                 </span>{" "}
                 Aspirant.
               </p>
-              <p className="mt-4 max-w-2xl text-pretty text-muted-foreground">
+              <p className="mt-4 max-w-2xl mx-auto lg:mx-0 text-pretty text-muted-foreground text-sm sm:text-base">
                 I build fast, accessible, and modern web apps with React and
                 JavaScript. Beautifully engineered interfaces, robust
                 architecture, and delightful interactions.
               </p>
-              <div className="mt-6 flex items-center gap-4">
+              <div className="mt-6 flex items-center justify-center lg:justify-start gap-3 sm:gap-4">
                 <a
                   href="https://github.com/sachinburnwal22"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub"
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
+                  className="group inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
                 >
-                  <Github className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
+                  <Github className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/sachin-burnwal-2004sb"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
+                  className="group inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/40 ring-1 ring-cyan-400/20 backdrop-blur hover:border-cyan-300/50 hover:ring-cyan-300/40 transition"
                 >
-                  <Linkedin className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
+                  <Linkedin className="h-4 w-4 sm:h-5 sm:w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
                 </a>
                 <a
                   href="https://leetcode.com/burnwal_sachin2004"
@@ -153,11 +159,11 @@ export default function HomePage() {
                   <LeetCode className="h-5 w-5 text-cyan-300 group-hover:text-cyan-200 transition" />
                 </a>
               </div>
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-6 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
                 <Ripple>
                   <a
                     href="#projects"
-                    className="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-[0_0_25px_rgba(34,211,238,0.25)] transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="w-full sm:w-auto rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-[0_0_25px_rgba(34,211,238,0.25)] transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-center"
                   >
                     View Projects
                   </a>
@@ -165,15 +171,15 @@ export default function HomePage() {
                 <Ripple>
                   <a
                     href="#contact"
-                    className="rounded-full border border-cyan-400/40 bg-black/20 px-5 py-2.5 text-sm font-medium text-foreground ring-1 ring-cyan-400/20 transition-colors hover:border-cyan-300/60 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="w-full sm:w-auto rounded-full border border-cyan-400/40 bg-black/20 px-5 py-2.5 text-sm font-medium text-foreground ring-1 ring-cyan-400/20 transition-colors hover:border-cyan-300/60 hover:text-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-center"
                   >
                     Get in Touch
                   </a>
                 </Ripple>
               </div>
             </div>
-            <div className="relative">
-              <HeroCodeCard className="md:ml-auto" />
+            <div className="relative order-first lg:order-last">
+              <HeroCodeCard className="mx-auto lg:ml-auto" />
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute -inset-x-6 -bottom-6 h-24 rounded-full bg-cyan-500/20 blur-2xl"
@@ -185,7 +191,7 @@ export default function HomePage() {
 
       <section
         aria-label="Highlights"
-        className="relative mx-auto max-w-6xl border-t border-border px-4 py-8"
+        className="relative mx-auto max-w-6xl border-t border-border px-4 py-6 md:py-8"
       >
         <Marquee
           items={[
@@ -202,7 +208,7 @@ export default function HomePage() {
 
       <section
         id="about"
-        className="relative mx-auto max-w-6xl border-t border-border px-4 py-16 md:py-24"
+        className="relative mx-auto max-w-6xl border-t border-border px-4 py-12 md:py-16 lg:py-24"
       >
         <Reveal delayMs={80}>
           <AboutMe />
@@ -211,14 +217,17 @@ export default function HomePage() {
 
       <section
         id="orbit"
-        className="relative mx-auto max-w-6xl border-t border-border px-4 py-16 md:py-24"
+        className="relative mx-auto max-w-6xl border-t border-border px-4 py-12 md:py-16 lg:py-24"
       >
         <Reveal delayMs={140}>
           <EarthSkillsSection />
         </Reveal>
       </section>
 
-      <section className="relative mx-auto max-w-6xl border-t border-border px-4 py-16 md:py-24">
+      <section
+        id="certifications"
+        className="relative mx-auto max-w-6xl border-t border-border px-4 py-12 md:py-16 lg:py-24"
+      >
         <Reveal delayMs={150}>
           <CertificationsSection />
         </Reveal>
@@ -226,10 +235,12 @@ export default function HomePage() {
 
       <section
         id="projects"
-        className="relative mx-auto max-w-6xl border-t border-border px-4 py-16 md:py-24"
+        className="relative mx-auto max-w-6xl border-t border-border px-4 py-12 md:py-16 lg:py-24"
       >
         <Reveal delayMs={160}>
-          <h3 className="text-xl font-semibold">Projects</h3>
+          <h3 className="text-xl font-semibold text-center md:text-left">
+            Projects
+          </h3>
           <div className="mt-6">
             <ProjectsMarquee />
           </div>
@@ -238,7 +249,7 @@ export default function HomePage() {
 
       <section
         id="contact"
-        className="relative mx-auto max-w-6xl border-t border-border px-4 py-16 md:py-24"
+        className="relative mx-auto max-w-6xl border-t border-border px-4 py-12 md:py-16 lg:py-24"
       >
         <Reveal delayMs={120}>
           <ContactCTA />
@@ -246,8 +257,8 @@ export default function HomePage() {
       </section>
 
       <footer className="border-t border-border bg-background">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 text-sm text-muted-foreground">
-          <p className="text-pretty">
+        <div className="mx-auto flex flex-col sm:flex-row max-w-6xl items-center justify-between px-4 py-6 text-sm text-muted-foreground gap-4">
+          <p className="text-pretty text-center sm:text-left">
             © {new Date().getFullYear()} Sachin Burnwal — Web Developer
           </p>
           <div className="flex items-center gap-4">
